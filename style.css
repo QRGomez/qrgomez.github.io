@@ -23,12 +23,13 @@ body {
 .header {
   -ms-flex-align: start;
   margin-bottom: 1px;
-  max-height: 80px;
+  margin: 5px;
+  /* max-height: 80px; */
 }
 
 .logos {
   mix-blend-mode: multiply;
-  height: 65px;
+  height: 70px;
   width: auto;
 }
 
@@ -241,7 +242,6 @@ body {
 .footer {
   -ms-flex-align: start;
   margin-bottom: 1px;
-  max-height: 80px;
   background-color: #243763;
 }
 
@@ -262,6 +262,13 @@ body {
   margin: 0.5rem;
   background-color: transparent;
   border: 0px;
+}
+
+.footer_logo {
+  margin: 15px;
+  height: 65px;
+  width: auto;
+  align-self: center;
 }
 
 /*Hover effects*/
