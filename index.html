@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FE - Project</title>
+  </head>
+  <body>
+    <!-- Fetch data and diplay on the html: API (https://jsonplaceholder.typicode.com/posts) -->
+    <div class="header" id="heading">
+      <div class="container">
+        <img src="resources/brand.png" class="logos" />
+      </div>
+    </div>
+
+    <div class="hero">
+      <div class="container">
+        <div class="wrapper">
+          <div class="introduction">
+            <h1>
+              Welcome to <br />
+              Mind-BLOGGING.net!
+            </h1>
+
+            <p>
+              We have a wide library of blog posts from different artist all
+              around the globe. <br /><br />
+              Press <b><i>"Browse Now"</i></b> to start.
+            </p>
+
+            <button class="btn --green" id="btns">Browse Now</button>
+          </div>
+
+          <div class="img-container">
+            <img src="resources/logo.svg" class="logo" />
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="page">
+      <div class="container">
+        <div class="wrapper">
+          <div id="filters" class="filter">
+            <div class="filter_heading">
+              <div class="main_head">
+                <h1>Mind-BLOGGING.net Library</h1>
+              </div>
+              <div class="sub_head">
+                <p>
+                  You can filter the contents by author using the dropdown menu
+                  at the screen
+                </p>
+              </div>
+            </div>
+            <label>Select Author:</label>
+            <select
+              id="user_ID"
+              onmousedown="this.value='';"
+              onChange="fetchPosts(this.value)"
+            ></select>
+          </div>
+          <div id="card_container"></div>
+        </div>
+      </div>
+    </div>
+    <div class="footer">
+      <div class="container">
+        <div class="wrapper">
+          <img class="footer_logo" src="resources/Brand_inv.png" />
+          <div class="socmed_links">
+            <button id="fb_icon">
+              <a
+                href="https://www.facebook.com/rafael.gomez.940098?mibextid=ZbWKwL"
+                target="_blank"
+              >
+                <img src="resources/facebook-circle-logo-24.png" />
+              </a>
+            </button>
+            <button id="git_icon">
+              <a href="https://github.com/QRGomez" target="_blank">
+                <img src="resources/github-logo-24.png" />
+              </a>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="fetch-NP.js"></script>
+    <link rel="stylesheet" href="style.css" />
+    <!--Calls the fetch.js file-->
+  </body>
+</html>
