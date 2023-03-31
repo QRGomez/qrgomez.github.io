@@ -47,6 +47,7 @@ const curr_Page_check = () => {
 
 const page_reset = () => {
   curr_Page = 0;
+  fetchPosts(curr_Page);
 };
 
 const getSelectedItem = () => {
@@ -96,8 +97,10 @@ const getChosenPage = () => {
   var pageNumber = document.getElementById("pageList");
   var sel_Page = pageNumber.value;
   curr_Page = sel_Page;
+  curr_Page_check();
   return curr_Page;
 };
+document.getElementById("pageList").addEventListener("change", getChosenPage);
 
 const createPages = async (url, page) => {
   try {
