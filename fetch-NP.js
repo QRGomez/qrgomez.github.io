@@ -16,15 +16,17 @@ const fetchUsers = async () => {
 
 const nextPage = () => {
   if (curr_Page < total_pages - 1) {
+    curr_Page = document.getElementById("pageList").value;
     curr_Page++;
-    fetchPosts();
+    fetchPosts(curr_Page);
   }
 };
 
 const backPage = () => {
   if (curr_Page > 0) {
+    curr_Page = document.getElementById("pageList").value;
     curr_Page--;
-    fetchPosts();
+    fetchPosts(curr_Page);
   }
 };
 
@@ -90,16 +92,26 @@ const produceContent = async (response) => {
   outputContainer.appendChild(outputDiv);
 };
 
-const createPages = async (url) => {
+const getChosenPage = () => {
+  var pageNumber = document.getElementById("pageList");
+  var sel_Page = pageNumber.value;
+  curr_Page = sel_Page;
+  return curr_Page;
+};
+
+const createPages = async (url, page) => {
   try {
     const response = await fetch(url);
     const data = await response.json();
     const num_of_pages = Math.ceil(data.length / 6);
     total_pages = num_of_pages;
     let page_divider = new Array(num_of_pages);
+    const allpages = document.getElementById("pageList");
+    allpages.innerHTML = "";
 
     for (let i = 0; i < page_divider.length; i++) {
       page_divider[i] = [];
+      allpages.innerHTML += `<option value=${i}>${i + 1}</>`;
     }
 
     var page_num = 0;
@@ -111,34 +123,23 @@ const createPages = async (url) => {
         page_divider[page_num].push(item);
       }
     });
-
-    return page_divider;
+    allpages.value = page;
+    produceContent(page_divider[page]);
   } catch (error) {
     console.log(error);
   }
 };
 
-const displayPages = async (url) => {
-  pages = "";
-  try {
-    pages = await createPages(url);
-    produceContent(pages[curr_Page]);
-    pagetrack = document.getElementById("currPage");
-    pagetrack.innerHTML = `<h3>${curr_Page + 1}</h3>`;
-  } catch (error) {
-    console.log(error);
-  }
-};
-const fetchPosts = async () => {
+const fetchPosts = async (chosenPage) => {
   curr_Page_check();
   id = getSelectedItem();
   let outputContainer = document.getElementById("card_container");
   outputContainer.innerHTML = "";
   pages = "";
   if (id == 0) {
-    displayPages(`${API_Source}`);
+    createPages(`${API_Source}`, chosenPage);
   } else {
-    displayPages(`${API_Source}?userId=${id}`);
+    createPages(`${API_Source}?userId=${id}`, chosenPage);
   }
 };
 //--------------------------
@@ -150,6 +151,6 @@ window.addEventListener("load", async () => {
     innerHTML += `<option value=${i.id}>${i.name}</>`;
   });
   dropdown.innerHTML = innerHTML;
-  fetchPosts();
+  fetchPosts(curr_Page);
   document.documentElement.scrollTop = 0;
 });

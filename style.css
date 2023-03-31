@@ -146,7 +146,7 @@ body {
   font-size: 20px;
 }
 
-.filter select {
+select {
   font-size: clamp(1rem, 100%, 2rem);
   border-radius: 8px;
   background-color: #fff;
@@ -302,9 +302,10 @@ body {
 
 
 
-#currPage {
-  color: #6a6a6a;
-  font-size: 2rem;
+#pageList {
+  font-size: 1rem;
+  padding: 0 20px;
+  align-content: center;
 }
 
 /*Hover effects*/

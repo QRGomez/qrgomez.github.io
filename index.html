@@ -70,7 +70,11 @@
               <button id="prev">
                 <img src="resources/bxs-chevron-left.svg" />
               </button>
-              <label id="currPage"></label>
+              <select
+                id="pageList"
+                onmousedown="this.value='';"
+                onChange="fetchPosts(this.value)"
+              ></select>
               <button id="next">
                 <img src="resources/bxs-chevron-right.svg" />
               </button>
